@@ -1,0 +1,194 @@
+React
+	
+WhatsApp
+Messages -> 
+Assume there are 3 messages
+	<text value='Hello' />
+	<text value='How are you' />
+	<text value='I am fine' />
+	
+Original DOM
+	<text value='Hello' />
+	<text value='How are you' />
+	<text value='I am fine' />
+Virtual DOM 
+	<text value='Hello' />
+	<text value='How are you' />
+	<text value='I am fine' />
+	
+On New Message Arrives 
+Virtual DOM - recreated
+	<text value='Hello' />
+	<text value='How are you' />
+	<text value='I am fine' fontSize=20 />
+	<text value='Good to Hear' />
+Compares each node with original DOM
+new Nodes -> will be injected
+updated Nodes -> Syncronized/Updated
+nodes are deleted -> removed in orginal DOM 
+
+Ex:
+Original/Virtual DOM -> r1, r2 , r3 are restaurants
+When Data Changes -> r1, r21, r4, r5 
+	Virtual DOM -> recreated with r1, r21, r4, r5 and then below changes are applied to original DOM
+		-> r2 node is updated with r21
+		->r3 will be deleted
+		-> r4, r5 will be injected
+		
+React Principle
+	When page is loaded for first time, Virtual DOM and Original DOM are created. 
+	Virtual DOM is just replica/clone of original DOM.
+	When data changes => Virtual DOM is recreated
+	and then Virtual DOM and Original DOM are compared node by node
+	if it finds new Node -> Injected
+				updated Node -> Updated
+				missing in new Virtual DOM -> Deleted
+		
+
+React - createElement(type, attributes, html)
+ReactDOM - render(what to render, where to render)
+Babel -> converts our JSX syntax into older structure 
+
+JSX
+	<div id="div1"> Welcome to Demo </div>
+Old Structure
+	React.createElement('div', { id: 'div1'}, 'Welcome to Demo')
+	
+HTML vs JSX
+HTML 
+	not compile - <div> Welcome to Demo <div>
+	rendered Directly
+JSX 
+	compiled - <div> Welcome to Demo </div>
+	converted into old structure(React.createElement) and then HTML components are created dynamically and injected
+	
+	
+React Component
+	In order to use Life Cycle, We need to use React Components
+	
+	
+Creating a React Component => 
+	Create a class and Extend React.Component 
+	and implement the render method.
+	
+Advantages
+	Life Cycle
+	StateManagement
+	
+State Management: Assume there are 100 textboxes, we have filled 50 boxes so far... 
+suddenly we refreshed the page, 50 textboxes should retain the value. 
+This process is called StateManagement.
+	HiddenFields
+	ViewState
+	Cookie
+	Local Storage
+	Use React Stateful Components
+	
+Array.prototype.map = function(callback){
+	for(var item of this){
+		callback(item);
+	}
+}
+
+function(item) {
+	return <li>{item}</li>;
+}
+
+Array Function
+(item) => {
+	return <li>{item}</li>;
+}
+
+(item) => <li>{item}</li>;
+
+creating Class with one public Variable in ES6 standard
+class Person {
+	constructor() {
+		this.firstName = '';
+	}
+}
+
+React -> When data changes, screen refreshes
+ie that data should be inside this.state
+
+creating variables
+	Local/block level Variable
+	Normal Class Level Variable
+	State Variable
+	Properties -> I can access values but cant update.
+
+
+Local/block level Variable
+var firstName = '';
+
+Normal Variable
+this.firstName
+
+State Variable
+this.state.firstName
+
+Properties
+this.props.firstName
+
+this.state.restaurants = ["A", "B"];
+this.setState( { restaurants: ["A", "B", "C"] });
+
+Passing scope to Javascript method
+method.bind(this);
+
+setState is an API written in React.Component. 
+It will recreate Virtual DOM and then Nodes are synchronized.
+
+Constructing Li Elements
+HTML
+<ul>
+	<li>React</li>
+	<li>React Native </li>
+</ul>
+
+Approach 1
+<ul>
+	{courses.map( function(item) {
+		return <li>{item}</li>
+	} )}
+</ul>
+
+Approach 2 - Most Preferable
+<ul>
+	{courses.map(item => <li>{item}</li>)}
+</ul>
+
+Approach 3
+renderItem(item){
+	return <li>{item}</li>;
+}
+<ul>
+	{courses.map(this.renderItem)}
+</ul>
+
+Approach 4
+getCourses(items){
+	var list = [];
+	for(var item of items){
+		list.push(<li>{item}</li>);
+	}
+	return list;
+}
+<ul>
+	{this.getCourses(courses)}
+</ul>
+
+
+Events
+	Button
+		OnClick
+	TextBox
+		OnChange
+
+string.indexOf(str) gives first occurance of str
+"Krishna".indexOf("J") => -1
+"Krishna".indexOf("K") => 0
+"Krishna".indexOf("i") => 2
+
+// HTML table reference 
+https://www.w3schools.com/html/html_tables.asp
