@@ -1,9 +1,3 @@
-/*words = ["cat", "in", "hat"];
-words.forEach(function(word, num, all) {
-  console.log("Word " + num + " in " + all.toString() + " is " + word);
-});
-
-
 /*
  * Programming Quiz: Another Type of Loop (6-8)
  *
@@ -13,29 +7,23 @@ words.forEach(function(word, num, all) {
  * Things to note:
  *  - you must use an `if` statement to verify code is divisible by 3
  *  - you can use `console.log` to verify the `test` variable when you're finished looping
-*/
-
+ */
 
 var test = [12, 929, 11, 3, 199, 1000, 7, 1, 24, 37, 4,
     19, 300, 3775, 299, 36, 209, 148, 169, 299,
     6, 109, 20, 58, 139, 59, 3, 1, 139
 ];
 
-/*/ Write your code here
-fruits.forEach(function(item, index, array) {
-  console.log(item, index);
-});
+// Write your code here
 
-*/
-
-test.forEach(function(word){
+test.forEach(function(num,index,array){
     
-    if(word %3 === 0){
+    if (num%3 ===0){
+        
+        array[index]= num +=100;
+        
 
-    	return word+100;
     }
-    console.log(word);
-
 });
 
- 
+console.log(test);
